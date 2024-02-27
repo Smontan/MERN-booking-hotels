@@ -13,22 +13,31 @@ const Header = () => {
         <span className=" space-x-2">
           {isLoggedIn ? (
             <>
-              <Link to="/" className=" text-white p-3 hover:bg-blue-600 font-bold rounded">My booking</Link>
-              <Link to="/" className=" text-white p-3 hover:bg-blue-600 font-bold rounded">My hotels</Link>
+              <Link
+                to="/"
+                className=" text-white p-3 hover:bg-blue-600 font-bold rounded"
+              >
+                My booking
+              </Link>
+              <Link
+                to="/my-hotels"
+                className=" text-white p-3 hover:bg-blue-600 font-bold rounded"
+              >
+                My hotels
+              </Link>
               <SignOutButton />
-              
             </>
           ) : (
             <>
               <Link
                 to="/login"
-                className=" text-blue-600 p-3 bg-gray-50 hover:bg-gray-100 font-bold" 
+                className=" text-blue-600 p-3 bg-gray-50 hover:bg-gray-100 font-bold"
               >
                 Sign in
               </Link>
               <Link
                 to="/register"
-                className=" text-blue-600 p-3 bg-gray-50 hover:bg-gray-100 font-bold" 
+                className=" text-blue-600 p-3 bg-gray-50 hover:bg-gray-100 font-bold"
               >
                 Sign up
               </Link>

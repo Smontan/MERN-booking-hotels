@@ -22,6 +22,7 @@ test.beforeEach(async ({ page }) => {
   await expect(page.getByText("Login successfully")).toBeVisible();
 });
 
+// add new hotel test
 test("should allow user to add a new hotel", async ({ page }) => {
   // goto add page url
   // await page.goto(ADD_PAGE_URL);
@@ -46,5 +47,27 @@ test("should allow user to add a new hotel", async ({ page }) => {
     path.join(__dirname, "files", "hotel3.jpg"),
   ]);
   await page.getByRole("button", { name: "Save your Hotel" }).click();
-  await expect(page.getByText("Hotel Saved")).toBeVisible({timeout: 10000});
+  await expect(page.getByText("Hotel Saved")).toBeVisible({ timeout: 10000 });
+});
+
+// display hotel test
+test("should display hotels", async ({ page }) => {
+  // goto my-hotel page
+  await page.goto(`${URI_URL}my-hotels`);
+  // click the My hotels link
+  await page.getByRole("link", { name: "My hotels" }).click();
+  // expect to see My Hotels heading
+  await expect(page.getByRole("heading", {name: "My Hotels"})).toBeVisible();
+  // expect to see Add Hotel link
+  await expect(page.getByText("Add Hotel")).toBeVisible();
+  // expect to see heading "My Hotel 2"
+  await expect(page.getByText("My Hotel 2")).toBeVisible();
+  await expect(page.getByText("Bayabas")).toBeVisible();
+  await expect(page.getByText("Philippines")).toBeVisible();
+  await expect(page.getByText("Very beautiful hotel")).toBeVisible();
+  await expect(page.getByText("2 Adults, 1 Child")).toBeVisible();
+  await expect(page.getByText("5 Star Rating")).toBeVisible();
+  await expect(page.getByText("500 per night")).toBeVisible();
+  // expect to see view detail link
+  await expect(page.getByRole("link", { name: "View Detail"})).toBeVisible();
 });
