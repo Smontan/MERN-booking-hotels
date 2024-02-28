@@ -57,7 +57,7 @@ test("should display hotels", async ({ page }) => {
   // click the My hotels link
   await page.getByRole("link", { name: "My hotels" }).click();
   // expect to see My Hotels heading
-  await expect(page.getByRole("heading", {name: "My Hotels"})).toBeVisible();
+  await expect(page.getByRole("heading", { name: "My Hotels" })).toBeVisible();
   // expect to see Add Hotel link
   await expect(page.getByText("Add Hotel")).toBeVisible();
   // expect to see heading "My Hotel 2"
@@ -69,5 +69,25 @@ test("should display hotels", async ({ page }) => {
   await expect(page.getByText("5 Star Rating")).toBeVisible();
   await expect(page.getByText("500 per night")).toBeVisible();
   // expect to see view detail link
-  await expect(page.getByRole("link", { name: "View Detail"})).toBeVisible();
+  await expect(page.getByRole("link", { name: "View Detail" })).toBeVisible();
+});
+
+// edit hotel test
+test("should allow user to edit hotel", async ({ page }) => {
+  // goto edit-hotel page
+  await page.goto(`${URI_URL}my-hotels`);
+  // expect heading of My Hotels
+  await expect(page.getByRole("heading", { name: "My Hotels" })).toBeVisible();
+  // expect a link of View Detail
+  await page.getByRole("link", { name: "View Detail" }).click();
+  // wait for a selector of name
+  await page.waitForSelector("[name=name]", {state: "attached"})
+  // expect the form to have a name of Lolinghayaw beach resort
+  await expect(page.locator("[name=name]")).toHaveValue("Lolinghayaw beach resort");
+  // update the name of the hotel
+  await page.locator("[name=name]").fill("Lolinghayaw beach resort UPDATED")
+  // save your hotel
+  await page.getByRole("button", { name: "Save your Hotel" }).click();
+  // expect show toast message of Hotel updated successfully
+  await expect(page.getByText("Hotel updated successfully")).toBeVisible({timeout: 10000})
 });
