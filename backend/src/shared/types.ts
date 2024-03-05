@@ -1,4 +1,3 @@
-import Hotel from "../models/hotel";
 
 export type HotelType = {
   _id: string;
@@ -23,6 +22,5 @@ export type HotelSearchResponse = {
     total: number,
     page: number,
     pages: number
-
   }
 }
