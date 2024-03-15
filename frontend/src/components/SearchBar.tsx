@@ -27,6 +27,7 @@ const SearchBar = () => {
     navigate("/search");
   };
 
+
   const minDate = new Date();
   const maxDate = new Date();
   maxDate.setFullYear(maxDate.getFullYear() + 1);
@@ -99,10 +100,10 @@ const SearchBar = () => {
         />
       </div>
       <div className="flex gap-1">
-        <button className="w-2/3 bg-blue-600 text-white h-full p-2 font-bold rounded hover:bg-blue-700">
+        <button className="w-2/3 bg-blue-600 text-white h-full p-2 font-bold rounded hover:bg-blue-700" type="submit">
           Search
         </button>
-        <button className="w-1/3 bg-red-600 text-white h-full p-2 font-bold rounded hover:bg-red-700">
+        <button className="w-1/3 bg-red-600 text-white h-full p-2 font-bold rounded hover:bg-red-700" >
           Clear
         </button>
       </div>
