@@ -3,6 +3,7 @@ import jwt from "jsonwebtoken";
 
 import User from "../models/user";
 import { check, validationResult } from "express-validator";
+import verifyToken from "../middelware/auth";
 
 const router = express.Router();
 
@@ -52,7 +53,7 @@ router.post(
         maxAge: 86400000,
       });
       // return res.status(200).json({message: "Register successfully"});
-      return res.status(200).send({ message: "Register a user successfully"})
+      return res.status(200).send({ message: "Register a user successfully" });
     } catch (error) {
       console.log(error);
       res.status(500).send({ message: "Something went wrong" });
@@ -60,5 +61,18 @@ router.post(
   }
 );
 
+// /api/users/me
+router.get("/me", verifyToken, async (req: Request, res: Response) => {
+  const userId = req.userId;
+
+  try {
+    const user = await User.findById(userId).select("-password");
+    if (!user) return res.status(400).json({ message: "User not found" });
+    res.json(user);
+  } catch (error) {
+    console.log(error);
+    res.status(400).json({ message: "Something went wrong" });
+  }
+});
+
 export default router;
- 
