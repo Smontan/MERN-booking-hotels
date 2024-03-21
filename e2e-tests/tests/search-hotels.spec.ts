@@ -76,4 +76,8 @@ test("should book hotel", async ({ page }) => {
 
   await page.getByRole("button", { name: "Confirm Booking" }).click();
   await expect(page.getByText("Booking saved!")).toBeVisible();
+
+  await page.getByRole("link", {name: "My booking"}).click();
+  await expect(page.getByText("Lolinghayaw beach")).toBeVisible();
 });
+

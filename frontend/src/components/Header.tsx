@@ -14,7 +14,7 @@ const Header = () => {
           {isLoggedIn ? (
             <>
               <Link
-                to="/"
+                to="/my-bookings"
                 className=" text-white p-3 hover:bg-blue-600 font-bold rounded"
               >
                 My booking
