@@ -4,7 +4,7 @@ import * as apiClient from "../api-client";
 const MyBookings = () => {
   const { data: hotels } = useQuery(
     "fetchMyBookings",
-    apiClient.fethMyBookings
+    apiClient.fetchMyBookings
   );
 
   if (!hotels || hotels.length === 0) {
