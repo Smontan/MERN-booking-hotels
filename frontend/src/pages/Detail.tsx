@@ -3,17 +3,18 @@ import { useParams } from "react-router-dom";
 import * as apiClient from "../api-client";
 import { AiFillStar } from "react-icons/ai";
 import GuestInfoForm from "../forms/GuestInfoForm/GuestInfoForm";
+import Spinner from "../components/Spinner";
 
 const Detail = () => {
   const { hotelId } = useParams();
 
-  const { data: hotel } = useQuery(
+  const { data: hotel, isLoading } = useQuery(
     "fetchHotelById",
     () => apiClient.fetchHotelById(hotelId as string),
     { enabled: !!hotelId }
   );
 
-  if (!hotel) return <></>;
+  if (isLoading) return <Spinner />;
 
   return (
     <div className="space-y-6">
