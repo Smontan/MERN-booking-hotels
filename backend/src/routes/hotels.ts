@@ -190,6 +190,8 @@ const constructSearchQuery = (queryParams: any) => {
     constructedQuery.$or = [
       { city: new RegExp(queryParams.destination, "i") },
       { country: new RegExp(queryParams.destination, "i") },
+      { name: new RegExp(queryParams.destination, "i") },
+
     ];
   }
 

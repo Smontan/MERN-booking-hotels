@@ -9,7 +9,7 @@ const LatestDestinationCard = ({ hotel }: Props) => {
   return (
     <Link
       to={`/detail/${hotel._id}`}
-      className="relative cursor-pointer overflow-hidden rounded-md"
+      className="relative cursor-pointer overflow-hidden rounded-md shadow-lg"
     >
       <div className="h-[300px]">
         <img
@@ -19,7 +19,7 @@ const LatestDestinationCard = ({ hotel }: Props) => {
         />
       </div>
       <div className="absolute bottom-0 p-4 bg-black bg-opacity-50 w-full rounded-b-md">
-        <span className="text-white font-bold tracking-tight text-3xl">
+        <span className="text-white font-bold tracking-tight text-xl lg:text-2xl ">
           {hotel.name}
         </span>
       </div>

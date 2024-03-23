@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useMutation } from "react-query";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { StripeCardElement } from "@stripe/stripe-js";
@@ -31,6 +31,7 @@ export type BookingFormData = {
 };
 
 const BookingForm = ({ currentUser, paymentIntent }: Props) => {
+  const navigate = useNavigate()
   const stripe = useStripe();
   const elements = useElements();
 
@@ -43,6 +44,7 @@ const BookingForm = ({ currentUser, paymentIntent }: Props) => {
     {
       onSuccess: () => {
         showToast({ message: "Booking saved!", type: "SUCCESS" });
+        navigate("/my-bookings")
       },
       onError: () => {
         showToast({ message: "Error saving booking", type: "ERROR" });

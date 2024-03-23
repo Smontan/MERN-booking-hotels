@@ -1,6 +1,5 @@
 import { FormEvent, useState } from "react";
 import { useSearchContext } from "../contexts/SearchContext";
-import { MdTravelExplore } from "react-icons/md";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useNavigate } from "react-router-dom";
@@ -35,23 +34,23 @@ const SearchBar = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="-mt-8 p-3 bg-orange-400 rounded shadow-md grid grid-cols-2 lg:grid-cols-5 2xl:grid-cols-5 items-center gap-4"
+      className="-mt-8 p-2 bg-orange-400 rounded shadow-md grid grid-cols-2 lg:grid-cols-5 2xl:grid-cols-5 items-center gap-2"
     >
-      <div className="flex flex-row flex-1 items-center bg-white p-2 rounded">
-        <MdTravelExplore />
+      <div className="flex flex-row flex-1 items-center bg-white py-1 px-2  rounded">
+        
         <input
           type="text"
-          className="w-full text-md focus:outline-none text-sm ms-1"
+          className="w-full text-md focus:outline-none placeholder:text-sm p-1 placeholder:text-center"
           placeholder="Where are you going?"
           value={destination}
           onChange={(event) => setDestination(event.target.value)}
         />
       </div>
-      <div className="flex bg-white px-1 py-2.5 rounded text-sm">
-        <label className="items-center flex w-full">
+      <div className="flex bg-white py-2.5 rounded text-sm px-2 gap-2">
+        <label className="items-center flex w-full gap-1">
           Adults:
           <input
-            className="w-full text-md focus:outline-none font-bold"
+            className="w-full text-md focus:outline-none font-bold text-center"
             type="number"
             min={1}
             max={20}
@@ -59,11 +58,11 @@ const SearchBar = () => {
             onChange={(event) => setAdultCount(parseInt(event.target.value))}
           />
         </label>
-        <label className="items-center flex w-full">
+        <label className="items-center flex w-full gap-1">
           Child:
           <input
             type="number"
-            className="w-full text-md focus:outline-none font-bold"
+            className="w-full text-md focus:outline-none font-bold text-center"
             min={0}
             max={20}
             value={childCount}
@@ -81,7 +80,7 @@ const SearchBar = () => {
           minDate={minDate}
           maxDate={maxDate}
           placeholderText="Check-in Date"
-          className="w-full bg-white p-2 focus:outline-none rounded text-center"
+          className="w-full bg-white p-2 focus:outline-none rounded  text-center placeholder:text-sm"
           wrapperClassName="min-w-full"
         />
       </div>
@@ -95,16 +94,13 @@ const SearchBar = () => {
           minDate={minDate}
           maxDate={maxDate}
           placeholderText="Check-out Date"
-          className="w-full bg-white p-2 focus:outline-none rounded text-center"
+          className="w-full bg-white p-2 focus:outline-none rounded text-center placeholder:text-sm"
           wrapperClassName="min-w-full"
         />
       </div>
       <div className="flex gap-1">
-        <button className="w-2/3 bg-blue-600 text-white h-full p-2 font-bold rounded hover:bg-blue-700" type="submit">
+        <button className="w-full bg-blue-600 text-white h-full p-2 font-bold rounded hover:bg-blue-700" type="submit">
           Search
-        </button>
-        <button className="w-1/3 bg-red-600 text-white h-full p-2 font-bold rounded hover:bg-red-700" >
-          Clear
         </button>
       </div>
     </form>

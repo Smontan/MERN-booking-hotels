@@ -1,15 +1,20 @@
 import { useFormContext } from "react-hook-form";
 import { HotelFormData } from "./ManageHotelForm";
+import { useLocation } from "react-router-dom";
 
 const DetailsSection = () => {
+  const { pathname } = useLocation();
+  const addHotelPath = pathname === "/add-hotel";
   const {
     register,
     formState: { errors },
   } = useFormContext<HotelFormData>();
 
   return (
-    <div className="flex flex-col gap-4">
-      <h1 className="text-3xl font-bold mb-3">Add Hotel</h1>
+    <div className="flex flex-col gap-4 ">
+      <h1 className="text-3xl font-bold mb-3">
+        {addHotelPath ? "Add Hotel" : "Edit Hotel"}
+      </h1>
       <label className="text-gray-700 font-bold text-sm flex-1">
         Name
         <input
@@ -20,7 +25,7 @@ const DetailsSection = () => {
         {errors.name && (
           <span className="text-red-500 text-sm font-bold">
             {errors.name.message}
-          </span> 
+          </span>
         )}
       </label>
       <div className="flex gap-4">

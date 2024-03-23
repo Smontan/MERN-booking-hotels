@@ -44,7 +44,7 @@ test("should allow user to sign in and sign out", async ({ page }) => {
   await page.locator("[name=email]").fill("test@gmail.com");
   await page.locator("[name=password]").fill("password");
   // click the login button
-  await page.getByRole("button", { name: "Login" }).click();
+  await page.getByRole("button", { name: "Sign in" }).click();
   // expect success toast message of Login successfully
   await expect(page.getByText("Login successfully")).toBeVisible();
 

@@ -9,7 +9,7 @@ type SearchResultCardType = {
 
 const SearchResultCard = ({ hotel }: SearchResultCardType) => {
   return (
-    <div className="grid grid-cols-1 xl:grid-cols-[2fr_3fr] border border-slate-300 rounded-lg p-8 gap-8">
+    <div className="grid grid-cols-1 xl:grid-cols-[2fr_3fr] border border-slate-300 rounded-lg p-5 gap-8 shadow-lg">
       {/* hotel image */}
       <div className="w-full h-[280px]">
         <img
@@ -18,13 +18,13 @@ const SearchResultCard = ({ hotel }: SearchResultCardType) => {
           alt="Hotel image"
         />
       </div>
-      <div className="grid grid-rows-[1fr_2fr_1fr]">
+      <div className="flex flex-col justify-between">
         {/* hotel name and rating and type */}
         <div>
           <div className="flex items-center">
             <span className="flex">
               {Array.from({ length: hotel.starRating }).map((_, index) => (
-                  <AiFillStar className="fill-yellow-400" key={index}/>
+                <AiFillStar className="fill-yellow-400" key={index} />
               ))}
             </span>
             <span className="ms-1 text-sm">{hotel.type}</span>
@@ -35,6 +35,9 @@ const SearchResultCard = ({ hotel }: SearchResultCardType) => {
           >
             {hotel.name}
           </Link>
+          <p className="text-sm text-gray-400 font-semibold">
+            {hotel.city}, {hotel.country}
+          </p>
         </div>
 
         {/* hotel description */}
@@ -42,8 +45,8 @@ const SearchResultCard = ({ hotel }: SearchResultCardType) => {
           <div className="line-clamp-4">{hotel.description}</div>
         </div>
 
-        <div className="grid grid-cols-2 items-end whitespace-nowrap">
-          <div className="flex gap-1 items-center">
+        <div className="mt-8 xl:mt-0 grid grid-cols-2 items-end whitespace-nowrap">
+          <div className="flex gap-2 items-center">
             {hotel.facilities.slice(0, 2).map((facility) => (
               <span
                 className="bg-slate-300 py-1 px-2 rounded-full font-bold text-xs"
@@ -58,10 +61,14 @@ const SearchResultCard = ({ hotel }: SearchResultCardType) => {
             </span>
           </div>
           <div className="flex flex-col items-end gap-1">
-            <span className="font-bold">${hotel.pricePerNight}</span>
+            <span className="text-xl font-bold text-gray-700">
+              <span className="text-2xl">₱ </span>
+              {hotel.pricePerNight}.
+              <span className="text-sm underline">00</span>
+            </span>
             <Link
               to={`/detail/${hotel._id}`}
-              className="bg-blue-600 text-white h-full p-2 font-bold  max-w-fit hover:bg-blue-500 rounded"
+              className="bg-blue-600 text-white h-full py-2 px-4 lg:px-5 lg:py-3 font-bold  max-w-fit hover:bg-blue-500 rounded"
             >
               View More
             </Link>

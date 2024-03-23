@@ -43,7 +43,7 @@ const Register = () => {
   });
 
   return (
-    <form className="flex flex-col gap-5 max-w-md mx-auto" onSubmit={onSubmit}>
+    <form className="flex flex-col gap-5 max-w-md mx-auto my-20" onSubmit={onSubmit}>
       <h2 className="text-3xl font-bold">Create an Account</h2>
       <div className="flex flex-col md:flex-row gap-5 ">
         <label className="text-gray-700 text-sm font-bold flex-1">
@@ -129,17 +129,16 @@ const Register = () => {
         <span className="text-sm">
           Already have an account?{" "}
           <Link to="/login" className="hover:text-blue-600 underline">
-            
             Sign up now!
           </Link>
         </span>
-        <button
-          type="submit"
-          className="bg-blue-600 text-white text-xl hover:bg-blue-500 p-2 rounded"
-        >
-          Create Account
-        </button>
       </span>
+      <button
+        type="submit"
+        className="bg-blue-600 text-white font-bold hover:bg-blue-500 p-2 rounded mt-4"
+      >
+        Create Account
+      </button>
     </form>
   );
 };

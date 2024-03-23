@@ -21,15 +21,18 @@ const Detail = () => {
       <div>
         <span className="flex">
           {Array.from({ length: hotel.starRating }).map((_, index) => (
-            <AiFillStar className="fill-yellow-400" key={index}/>
+            <AiFillStar className="fill-yellow-400" key={index} />
           ))}
         </span>
-        <h1 className="text-3xl font-bold">{hotel.name}</h1>
+        <h1 className="text-3xl font-bold pb-2 ">{hotel.name}</h1>
+        <h4 className="font-semibold text-gray-500">
+          {hotel.city}, {hotel.country}
+        </h4>
       </div>
       {/* Hotel Images */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 ">
         {hotel.imageUrls.map((image) => (
-          <div className="h-[300px]" key={image}>
+          <div className="h-[300px] shadow-md" key={image}>
             <img
               src={image}
               alt={hotel.name}
@@ -38,17 +41,25 @@ const Detail = () => {
           </div>
         ))}
       </div>
-      {/* Hotel Facilities */}
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-2">
-        {hotel.facilities.map((facility) => (
-          <div className="border border-slate-300 rounded-sm p-2" key={facility}>
-            {facility}
-          </div>
-        ))}
-      </div>
+
       {/* Hotel Description */}
-      <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-4">
-        <div className="whitespace-pre-line">{hotel.description}</div>
+      <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-8">
+        <div className="flex flex-col gap-8">
+          {/* Hotel Facilities */}
+          <div className="flex gap-4">
+            {hotel.facilities.map((facility) => (
+              <div
+                className="border border-slate-300 bg-slate-50 rounded-full py-2 px-4 text-sm font-bold text-gray-500"
+                key={facility}
+              >
+                {facility}
+              </div>
+            ))}
+          </div>
+          <div className="whitespace-pre-line max-w-[720px]">
+            {hotel.description}
+          </div>
+        </div>
         <div className="h-fit">
           <GuestInfoForm
             hotelId={hotel._id}

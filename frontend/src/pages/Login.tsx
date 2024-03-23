@@ -36,7 +36,7 @@ const Login = () => {
   });
 
   return (
-    <form className="flex  flex-col gap-5 max-w-md mx-auto" onSubmit={onSubmit}>
+    <form className="flex  flex-col gap-5 max-w-md mx-auto my-20" onSubmit={onSubmit}>
       <h2 className="text-3xl font-bold">Login</h2>
       <div className="flex flex-col md:flex-row gap-5">
         <label className="text-gray-700 text-sm font-bold flex-1">
@@ -79,13 +79,13 @@ const Login = () => {
             Create an account here.
           </Link>
         </span>
-        <button
-          type="submit"
-          className="bg-blue-600 text-white text-xl hover:bg-blue-500 p-2 rounded"
-        >
-          Login
-        </button>
       </span>
+      <button
+          type="submit"
+          className="bg-blue-600 text-white  hover:bg-blue-500 p-2 rounded font-bold px-4 py-2 mt-4 text-md shadow-md"
+        >
+          Sign in
+        </button>
     </form>
   );
 };
