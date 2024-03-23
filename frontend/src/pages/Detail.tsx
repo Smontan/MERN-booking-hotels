@@ -14,7 +14,9 @@ const Detail = () => {
     { enabled: !!hotelId }
   );
 
-  if (isLoading) return <Spinner />;
+  if(isLoading) return <Spinner />
+
+  if (!hotel) return <></>;
 
   return (
     <div className="space-y-6">
